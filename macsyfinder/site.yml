@@ -1,0 +1,12 @@
+---
+- name: Install MacSyFinder/MacSyView, hmmer3, ncbi-blast+, firefox, x2goserver
+  hosts: local
+  remote_user: unix
+  # become: yes
+  # become_user: root
+
+
+  roles: 
+    - macsyfinder
+
+

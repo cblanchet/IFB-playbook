@@ -1,0 +1,4 @@
+---
+
+- name: start x2go
+  service: name=x2goserver state=started
