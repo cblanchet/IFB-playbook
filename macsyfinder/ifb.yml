@@ -7,13 +7,15 @@
 - tools: 
   - package:
     name: hmmer3
+  - package:
+    name: ncbi+
   - package: 
     name: firefox
   - package:
     name: x2goserver 
     source: ppa:x2go/stable
   - archive:
-    name: macsyfinder
+    name: [macsyfinder, macsyview]
     homepage: https://github.com/gem-pasteur/macsyfinder
     publication: http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0110726
     url: https://bintray.com/artifact/download/gem-pasteur/MacSyFinder/macsyfinder-1.0.2.tar.gz
