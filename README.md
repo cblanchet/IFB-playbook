@@ -11,6 +11,15 @@
 
 ### Creating a GitHub account
 
+ GitHub account will enable all other developers to track (and review) your changes to the code base, 
+ and will help you track other developers' contributions.
+
+ If you don't already have a GitHub account, you can create one 
+ [here](https://github.com/join) (the free plan is absolutely enough). 
+ Once you have created your account, upload an SSH public key by clicking on 
+ ['Account'](https://github.com/account) after logging in. 
+ For more information on generating and uploading an SSH public key, see this 
+ [GitHub guide](https://help.github.com/articles/generating-ssh-keys/). 
 
 ### Get a copy of this repository
  
