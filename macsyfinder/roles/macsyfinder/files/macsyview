@@ -1,0 +1,5 @@
+#! /bin/sh
+
+`firefox file:///usr/share/macsyfinder/macsyview/app/index.html`
+
+
