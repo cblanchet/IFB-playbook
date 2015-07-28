@@ -12,7 +12,7 @@
   tags: macsy
  
 - name: extract MacSyFinder/MacSyView archive
-  unarchive: src=/tmp/macsyfinder-{{ vers }}.tar.gz dest=/tmp/ creates=/tmp/macsyfinder-{{ vers }}/setup.py
+  unarchive: src=/tmp/macsyfinder-{{ vers }}.tar.gz dest=/tmp/ creates=/tmp/macsyfinder-{{ vers }}/setup.py copy=no
   tags: macsy
 
 - name: Build MacSyFinder
@@ -23,6 +23,20 @@
   shell: python setup.py install chdir=/tmp/macsyfinder-{{ vers }} creates=/usr/bin/macsyfinder
   tags: macsy
   
+- name: rename macsyfinder.conf.new
+  command: mv /etc/macsyfinder/macsyfinder.conf.new /etc/macsyfinder/macsyfinder.conf
+  tags: macsy
+
+- name: configure macsyfinder to work in /root/mydisk
+  # /root/mydisk is the default pdisk mounting point
+  # so it's better to save result on the user pdisk
+  copy: src=roles/macsyfinder/files/macsyfinder.conf dest=/etc/macsyfinder mode=440
+  tags: macsy
+
+- name: replace macsyview script
+  copy: src=roles/macsyfinder/files/macsyview dest=/usr/local/bin/ mode=775
+  tags: macsy
+
 - name: copy file MacSyFinder_Quick_start
   copy: src=roles/macsyfinder/files/MacSyFinder_Quick_Start dest=/home/root/ mode=440
   tags: macsy
@@ -33,7 +47,7 @@
   apt_repository: repo='ppa:x2go/stable' update_cache=yes
   tags: x2go
 
-- name: install x2goserver and start it(useful only to run macsyview through firefox)
+- name: install x2goserver and start it (useful only to run macsyview through firefox)
   apt: pkg=x2goserver state=installed
   tags: x2go
   notify: start x2goserver
@@ -41,7 +55,6 @@
 - name: ensure x2goserver is running (and enable i at boot)
   service: name=x2goserver state=started enabled=yes
   tags: x2go 
-
 
 - name: Install Firefox (useful only to run macsyview)
   apt: pkg=firefox state=installed
