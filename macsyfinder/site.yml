@@ -1,9 +1,7 @@
 ---
 - name: Install MacSyFinder/MacSyView, hmmer3, ncbi-blast+, firefox, x2goserver
-  hosts: local
+  hosts: ifb 
   remote_user: root
-  become: yes
-  become_user: root
 
 
   roles: 
