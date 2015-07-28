@@ -1,0 +1,112 @@
+This documentation focus on the specificity of this MacSyFinder installation.
+For more general information about MacSyFinder please visit 
+http://macsyfinder.readthedocs.org/en/latest/index.html
+
+Where are the files:
+====================
+
+configuration file: as default macsyfinder.conf file is located in /etc/macsyfinder
+models directory: /usr/share/macsyfinder/DEF/
+where are test genome: /usr/share/macsyfinder/sequence_data/datatest_gembase.fasta
+where are my results: /root/mydisk
+
+Run macsyfinder:
+================
+
+To see all options available.
+`macsyfinder -h`  
+
+
+On a “metagenomic” dataset for example:
+`macsyfinder --db-type unordered --sequence-db metagenome.fasta all`
+will detect all systems modelled in .xml files placed in the default definition folder in a metagenomic dataset.
+
+
+`macsyfinder --db-type unordered --sequence-db metagenome.fasta -d mydefinitions/ all`
+will detect all systems modelled in .xml files placed in the “mydefinitions” folder.
+
+
+On a completely assembled genome (where the gene order is known, and is relevant for systems detection):
+`macsyfinder --db-type ordered-replicon --sequence-db mygenome.fasta -d mydefinitions/ SystemA SystemB`
+will detect the systems “SystemA” and “SystemB” in a complete genome from 
+“SystemA.xml” and “SystemB.xml” definition files placed in the folder “mydefinitions”.
+
+
+First trial with a test dataset:
+--------------------------------
+
+We included a test dataset in the MacSyFinder package. 
+It is installed in /usr/share/macsyfinder/sequence_data/
+
+This dataset consists in the detection of CRISPR-Cas SubTypes with the definitions in the /usr/share/macsyfinder/DEF folder, 
+using the profiles in the /usr/share/macsyfinder/profiles folder. 
+This classification was previously described in Makarova et al. 2011, 
+and the profiles are from the TIGRFAM database (release 13 of August 15 2012) 
+and some of them were specifically designed for CRISPR-Cas classification (Haft et. al, 2005). 
+The definitions are detailed in the MacSyFinder’s paper.
+
+As a sequence dataset, we propose three replicons in /share/macsyfinder/sequence_data/datatest_gembase.fasta:
+ * Escherichia coli str. K-12 substr. MG1655 chromosome (ESCO001c01a). Genbank accession number: NC_000913.
+ * Haloarcula marismortui ATCC 43049 plasmid pNG400 (HAMA001p04a). Genbank accession number: NC_006392.
+ * Legionella pneumophila str. Paris, complete genome (LEPN003c01a). Genbank accession number: NC_006368.
+
+They were concatenated in a single fasta file, following the “gembase” format 
+(see http://macsyfinder.readthedocs.org/en/latest/gembase_convention.html#gembase-convention), 
+and thus MacSyfinder will treat the three different replicons separately for systems inference.
+
+To run the detection and classification of all subtypes, type:
+
+'macsyfinder --db-type gembase --sequence-db /usr/share/macsyfinder/sequence_data/datatest_gembase.fasta all'
+
+To run the detection of the Type-IE subtype only, type:
+
+'macsyfinder --db-type gembase --sequence-db /usr/share/macsyfinder/sequence_data/datatest_gembase.fasta CAS-TypeIE'
+
+
+Optimize MacSyFinder:
+---------------------
+
+Choose the number of workers in function of the number of the cores of your appliance.
+If you instanciated an appliance with 8 cores add option '-w 8' on the command line. 
+macsyfinder will internally execute 8 hmmsearch in parallele. 
+
+
+Run macsyview:
+==============
+
+Macsyview use firefox to display graphically results compute by macsyfinder.
+In order to run macsyview you must install a software name x2gclient on your
+own desktop to open macsyview.
+
+Configure x2goclient:
+-----------------------
+
+Click on 'Session > New Session Ctrl N' on the toolbar of the window
+
+In the configuration panel set the following fields:
+ 
+ * Session name: give a name to the session 'macsyview' for instance
+ * Host: the ip of the appliance
+ * Check 'Try auto login (ssh-agent or default ssh key)
+ * In 'Session type' section, select 'Single application' and 
+   in the last dropdown box on the right, write 'macsyview'
+
+then click on 'OK'
+
+a window with firefox will open with the welcome page of macsyview.
+THIS macsyview RUN ON THE REMOTE host
+browse /root/mydisk/macsyfinder-xxxxxx   (if you leave the default location for the results) 
+and open a results.macsyfinder.json file.
+
+If you save a schema don't forget that you are on the remote host
+and only what is located in /root/mydisk is persistent.
+
+
+How to cite MacSyFinder:
+========================
+
+Abby SS, Néron B, Ménager H, Touchon M, Rocha EPC (2014) 
+MacSyFinder: A Program to Mine Genomes for Molecular Systems with an Application to CRISPR-Cas Systems. 
+PLoS ONE 9(10): e110726. doi:10.1371/journal.pone.0110726
+
+
