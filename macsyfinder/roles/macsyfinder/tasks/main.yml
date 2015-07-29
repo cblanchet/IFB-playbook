@@ -52,7 +52,7 @@
   tags: x2go
   notify: start x2goserver
 
-- name: ensure x2goserver is running (and enable i at boot)
+- name: ensure x2goserver is running (and enable it at boot)
   service: name=x2goserver state=started enabled=yes
   tags: x2go 
 
