@@ -59,3 +59,8 @@
 - name: Install Firefox (useful only to run macsyview)
   apt: pkg=firefox state=installed
   tags: firefox
+
+- name: set motd 
+  copy: src=roles/macsyfinder/files/motd dest=/etc mode=664
+  tags: motd
+
