@@ -38,7 +38,7 @@
   tags: macsy
 
 - name: copy file MacSyFinder_Quick_start
-  copy: src=roles/macsyfinder/files/MacSyFinder_Quick_Start dest=/home/root/ mode=440
+  copy: src=roles/macsyfinder/files/MacSyFinder_Quick_Start dest=/root/ mode=440
   tags: macsy
 
 - name: add x2go repository  (useful only to run macsyview through firefox)
