@@ -10,6 +10,8 @@ models directory: /usr/share/macsyfinder/DEF/
 where are test genome: /usr/share/macsyfinder/sequence_data/datatest_gembase.fasta
 where are my results: /root/mydisk
 
+Of course this defaul behavior can be overriden by commandline options (see macsyfinder --help for more details).
+
 Run macsyfinder:
 ================
 
