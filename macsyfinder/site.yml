@@ -5,6 +5,7 @@
 
 
   roles: 
+    - ifb
     - macsyfinder
 
 
