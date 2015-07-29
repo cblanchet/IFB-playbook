@@ -83,21 +83,32 @@ own desktop to open macsyview.
 Configure x2goclient:
 -----------------------
 
+After installing x2goclient on your local desktop, 
+you must configure a new session to run macsyview.
+
 Click on 'Session > New Session Ctrl N' on the toolbar of the window
 
 In the configuration panel set the following fields:
  
  * Session name: give a name to the session 'macsyview' for instance
  * Host: the ip of the appliance
+ * Login: root
+ * SSH port: 22
  * Check 'Try auto login (ssh-agent or default ssh key)
  * In 'Session type' section, select 'Single application' and 
    in the last dropdown box on the right, write 'macsyview'
 
 then click on 'OK'
 
-a window with firefox will open with the welcome page of macsyview.
-THIS macsyview RUN ON THE REMOTE host
-browse /root/mydisk/macsyfinder-xxxxxx   (if you leave the default location for the results) 
+A session has appeared on the right of your x2go window.
+Click twice on it to run it. If you open your masyview session
+A window with firefox will open with the welcome page of macsyview.
+THIS macsyview RUN ON THE REMOTE host.
+
+Use the button at the bottom of the page to
+browse the disk of the vm to open a macsyfinder result
+for instance /root/mydisk/macsyfinder-xxxxxx   
+(if you leave the default location for the results) 
 and open a results.macsyfinder.json file.
 
 If you save a schema don't forget that you are on the remote host
