@@ -1,0 +1,9 @@
+---
+- name: install pipeline coregenbuilder
+  hosts: ifb
+  remote_user: root
+
+
+  roles:
+    - ifb
+    - coregenbuilder
