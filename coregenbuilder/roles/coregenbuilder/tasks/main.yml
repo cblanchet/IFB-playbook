@@ -23,4 +23,16 @@
 - name: install R
   apt: pkg=r-base state=installed install_recommends=yes force=yes
   tags: R
- 
+
+- name: download prodigal
+  get_url: url=https://github.com/hyattpd/Prodigal/archive/v2.6.3.tar.gz dest=/tmp/Prodigal-2.6.3.tar.gz
+  tags: prodigal
+
+- name: unarchive prodigal
+  unarchive: src=/tmp/Prodigal-2.6.3.tar.gz dest=/usr/local/src copy=no
+  tags: prodigal
+
+- name: install prodigal
+  command: make install chdir=/usr/local/src/Prodigal-2.6.3
+  tags: prodigal
+
