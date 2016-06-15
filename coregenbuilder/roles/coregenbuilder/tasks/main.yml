@@ -1,0 +1,26 @@
+---
+- name: install ncbi-blast+ package (required by ecamber).
+  apt: pkg=ncbi-blast+ state=installed
+  tags: ecamber
+
+- name: install muscle package (required by ecamber)i
+  apt: pkg=muscle state=installed
+  tags: ecamber
+
+- name: install python-dev
+  apt: pkg=python-dev state=installed
+  tags: biopython
+
+- name: install library biopython
+  command: pip install biopython==1.65
+  tags: biopython
+
+- name: Add R repository
+  # On Ubuntu target: add R stable repository and install it.
+  apt_repository: repo='deb http://cran.r-project.org/bin/linux/ubuntu trusty' update_cache=yes 
+  tags: R
+
+- name: install R
+  apt: pkg=r-base state=installed
+  tags: R
+ 
