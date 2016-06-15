@@ -80,3 +80,49 @@
   command: make install chdir=/usr/local/src/andi-0.9.4
   tags: andi
 
+- name: download ecamber
+  get_url: url=http://bioputer.mimuw.edu.pl/ecamber/software/ecamber_src_1.09.zip dest=/tmp/ecamber_src_1.09.zip
+  tags: ecamber
+
+- name: unarchive ecamber
+  unarchive: src=/tmp/ecamber_src_1.09.zip dest=/usr/local/src copy=no
+  tags: ecamber
+
+- name: get muscle path
+  shell: which muscle
+  register: MUSCLE
+  tags: ecamber
+
+- name: get blast+/tblastn path
+  shell: which tblastn
+  register: TBLASTN
+  tags: ecamber
+
+- name: configure ecamber
+  template: src=templates/ecamber_config_aln_paths.j2 dest=/usr/local/src/ecamber/config/config_aln_paths.txt
+  tags: ecamber
+
+- name: get blast+/blastn path
+  shell: which blastn
+  register: BLASTN
+  tags: ecamber
+
+- name: get blast+/blastp path
+  shell: which blastp
+  register: BLASTP
+  tags: ecamber
+
+- name: get blast+/makeblastdb path
+  shell: which makeblastdb
+  register: MAKEBLASTDB
+  tags: ecamber
+
+- name: get prodigal path
+  shell: which prodigal
+  register: PRODIGAL
+  tags: ecamber
+
+- name: configure ecamber 2nd step
+  template: src=templates/ecamber_config_extpaths.j2 dest=/usr/local/src/ecamber/config/config_extpaths.txt
+  tags: ecamber
+
