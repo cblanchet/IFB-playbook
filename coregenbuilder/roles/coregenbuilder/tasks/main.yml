@@ -1,9 +1,9 @@
 ---
-- name: install ncbi-blast+ package (required by ecamber).
+- name: install ncbi-blast+ package (required by ecamber)
   apt: pkg=ncbi-blast+ state=installed
   tags: ecamber
 
-- name: install muscle package (required by ecamber)i
+- name: install muscle package (required by ecamber)
   apt: pkg=muscle state=installed
   tags: ecamber
 
@@ -17,10 +17,10 @@
 
 - name: Add R repository
   # On Ubuntu target: add R stable repository and install it.
-  apt_repository: repo='deb http://cran.r-project.org/bin/linux/ubuntu trusty' update_cache=yes 
+  apt_repository: repo='deb http://cran.r-project.org/bin/linux/ubuntu trusty/' update_cache=yes 
   tags: R
 
 - name: install R
-  apt: pkg=r-base state=installed
+  apt: pkg=r-base state=installed install_recommends=yes force=yes
   tags: R
  
