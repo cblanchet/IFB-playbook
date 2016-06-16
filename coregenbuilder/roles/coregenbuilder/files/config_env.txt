@@ -1,0 +1,12 @@
+#File to set env variables
+ANDI=andi
+ECAMBER=/usr/local/src/ecamber
+#COREGENOME=$MAINDIR/ext-tools/CoreGenome
+DATA=/root/mydisk
+DATA_ASSEMBLY_DIR=assemblies
+DATA_ECAMBER_OUT=$DATA
+DATA_ECAMBER_OUTPUT=ecamber_output
+DATA_GENE_DIR=genes
+DATA_PROT_DIR=proteins
+DATA_DIVERSITY_DIR=diversity
+DATA_CORE_DIR=core_genome

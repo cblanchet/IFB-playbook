@@ -166,24 +166,32 @@
   file: path=/etc/coregenbuilder state=directory
   tags: coregenbuilder
 
+- name: remove share/coregenbuilder dir if exists
+  file: path=/usr/local/share/coregenbuilder state=absent
+  tags: coregenbuilder
+
 - name: create coregenbuilder share directory
   file: path=/usr/local/share/coregenbuilder state=directory
   tags: coregenbuilder
 
 - name: configure coregenbuilder - step 1
-  shell: mv /usr/local/src/coregenbuilder/src/* /usr/local/bin/.
+  shell: mv /usr/local/src/coregenbuilder/src/* /usr/local/bin
   tags: coregenbuilder
 
 - name: configure coregenbuilder - step 2
-  shell: mv /usr/local/src/coregenbuilder/config/* /etc/coregenbuilder/.
+  shell: mv /usr/local/src/coregenbuilder/config/* /etc/coregenbuilder
   tags: coregenbuilder
 
 - name: configure coregenbuilder - step 3
-  shell: mv /usr/local/src/coregenbuilder/doc /usr/local/share/coregenbuilder/.
+  shell: mv /usr/local/src/coregenbuilder/doc /usr/local/share/coregenbuilder
   tags: coregenbuilder
 
 - name: configure coregenbuilder - step 4
-  shell: mv /usr/local/src/coregenbuilder/data /usr/local/share/coregenbuilder/.
+  shell: mv /usr/local/src/coregenbuilder/data /usr/local/share/coregenbuilder
+  tags: coregenbuilder
+
+- name: configure coregenbuilder - step 5
+  copy: src=files/config_env.txt dest=/etc/coregenbuilder
   tags: coregenbuilder
 
 - name: remove all archives from /tmp
