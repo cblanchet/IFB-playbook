@@ -126,3 +126,74 @@
   template: src=templates/ecamber_config_extpaths.j2 dest=/usr/local/src/ecamber/config/config_extpaths.txt
   tags: ecamber
 
+- name: transfer opscan archive
+  copy: src=files/opscan_src_files.tar.gz dest=/tmp/opscan_src_files.tar.gz
+  tags: opscan
+
+- name: unarchive opscan
+  unarchive: src=/tmp/opscan_src_files.tar.gz dest=/usr/local/src copy=no
+  tags: opscan
+
+- name: install opscan
+  shell: make clean; make chdir=/usr/local/src/opscan_src_files
+  tags: opscan
+
+- name: copy opscan binary
+  copy: src=/usr/local/src/opscan_src_files/bin/opscan dest=/usr/local/bin/opscan remote_src=True mode=0755
+  tags: opscan
+
+- name: create directory opscan
+  file: path=/usr/local/share/opscan state=directory 
+  tags: opscan
+
+- name: copy opscan data
+  copy: src=/usr/local/src/opscan_src_files/matrices/BLOSUM60 dest=/usr/local/share/opscan remote_src=True
+  tags: opscan
+
+- name: remove opscan source files
+  file: path=/usr/local/src/opscan_src_files state=absent
+  tags: opscan
+
+- name: transfer coregenbuilder source files
+  copy: src=files/coregenbuilder.tar.gz dest=/tmp/coregenbuilder.tar.gz
+  tags: coregenbuilder
+
+- name: unarchive coregenbuilder
+  unarchive: src=/tmp/coregenbuilder.tar.gz dest=/usr/local/src copy=no
+  tags: coregenbuilder
+
+- name: create coregenbuilder etc directory
+  file: path=/etc/coregenbuilder state=directory
+  tags: coregenbuilder
+
+- name: create coregenbuilder share directory
+  file: path=/usr/local/share/coregenbuilder state=directory
+  tags: coregenbuilder
+
+- name: configure coregenbuilder - step 1
+  shell: mv /usr/local/src/coregenbuilder/src/* /usr/local/bin/.
+  tags: coregenbuilder
+
+- name: configure coregenbuilder - step 2
+  shell: mv /usr/local/src/coregenbuilder/config/* /etc/coregenbuilder/.
+  tags: coregenbuilder
+
+- name: configure coregenbuilder - step 3
+  shell: mv /usr/local/src/coregenbuilder/doc /usr/local/share/coregenbuilder/.
+  tags: coregenbuilder
+
+- name: configure coregenbuilder - step 4
+  shell: mv /usr/local/src/coregenbuilder/data /usr/local/share/coregenbuilder/.
+  tags: coregenbuilder
+
+- name: remove all archives from /tmp
+  file: path=/tmp/{{ item }} state=absent
+  with_items:
+     - andi-0.9.4.tar.gz
+     - coregenbuilder.tar.gz
+     - ecamber_src_1.09.zip
+     - libdivsufsort-2.0.2-1.tar.gz
+     - opscan_src_files.tar.gz
+     - Prodigal-2.6.3.tar.gz
+  tags: clean 
+
