@@ -126,6 +126,10 @@
   template: src=templates/ecamber_config_extpaths.j2 dest=/usr/local/src/ecamber/config/config_extpaths.txt
   tags: ecamber
 
+- name: correction of ecamber python script
+  replace: dest=/usr/local/src/ecamber/src/soft/utils/camber_format_utils.py regexp='left_bound, right_bound = tokens\[1\]\.strip\("complement\("\)\.split\("\.\."\)' replace='left_bound, right_bound = tokens[1].strip("complement(").strip(")").split("..")'
+  tags: ecamber
+
 - name: transfer opscan archive
   copy: src=files/opscan_src_files.tar.gz dest=/tmp/opscan_src_files.tar.gz
   tags: opscan
