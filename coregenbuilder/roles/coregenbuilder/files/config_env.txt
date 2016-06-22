@@ -1,6 +1,8 @@
 #File to set env variables
+CGB_BIN=""
 ANDI=andi
 ECAMBER=/usr/local/src/ecamber
+OPSCAN_MATRIX=/usr/local/share/opscan/BLOSUM60
 #COREGENOME=$MAINDIR/ext-tools/CoreGenome
 DATA=/root/mydisk
 DATA_ASSEMBLY_DIR=assemblies
