@@ -1,0 +1,5 @@
+[ifb]
+192.54.201.119
+
+[ifb:vars]
+CGB_CONFIG_PATH=/etc/coregenbuilder/
