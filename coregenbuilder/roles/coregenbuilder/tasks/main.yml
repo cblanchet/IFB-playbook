@@ -24,6 +24,10 @@
   apt: pkg=r-base state=installed install_recommends=yes force=yes
   tags: R
 
+- name: install tcsh
+  apt: pkg=tcsh state=installed
+  tags: tcsh
+
 - name: download prodigal
   get_url: url=https://github.com/hyattpd/Prodigal/archive/v2.6.3.tar.gz dest=/tmp/Prodigal-2.6.3.tar.gz
   tags: prodigal
@@ -124,6 +128,10 @@
 
 - name: configure ecamber 2nd step
   template: src=templates/ecamber_config_extpaths.j2 dest=/usr/local/src/ecamber/config/config_extpaths.txt
+  tags: ecamber
+
+- name: configure ecamber 3rd step
+  copy: src=files/config_resources.txt dest=/usr/local/src/ecamber/config/config_resources.txt
   tags: ecamber
 
 - name: correction of ecamber python script
