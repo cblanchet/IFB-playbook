@@ -1,0 +1,43 @@
+---
+- title: CoreGenBuilder
+- description: Build core genome from a set of genomes
+- maintainer:
+  name: Bertrand Néron 
+  email: bneron@pasteur.fr
+- tools: 
+  - package:
+    name: ncbi-blast+
+  - package: 
+    name: muscle
+  - package: 
+    name: python-dev
+  - package: 
+    name: biopython==1.65
+    source: pip
+  - package:
+    name: r-base 
+    source: deb http://cran.r-project.org/bin/linux/ubuntu trusty/
+  - package: 
+    name: tcsh
+  - package: 
+    name: cmake
+  - archive: 
+    name: prodigal
+    url: https://github.com/hyattpd/Prodigal/archive/v2.6.3.tar.gz
+  - archive: 
+    name: libdivsufsort
+    url: https://github.com/EvolBioInf/andi/releases/download/v0.9.4/libdivsufsort-2.0.2-1.tar.gz
+  - archive: 
+    name: andi
+    url: https://github.com/EvolBioInf/andi/releases/download/v0.9.4/andi-0.9.4.tar.gz
+  - archive:
+    name: ecamber
+    url: http://bioputer.mimuw.edu.pl/ecamber/software/ecamber_src_1.09.zip
+  - archive:
+    name: opscan
+  - archive:
+    name: coregenbuilder
+
+- classification:
+  - operation: http://edamontology.org/operation_0362 # Genome annotation
+  - topics: http://edamontology.org/topic_0085 # Functional genomics
