@@ -39,5 +39,8 @@
     name: coregenbuilder
 
 - classification:
+  - operation: http://edamontology.org/operation_2995 # Sequence classification
+  - operation: http://edamontology.org/operation_0289 # Sequence distance matrix generation
   - operation: http://edamontology.org/operation_0362 # Genome annotation
-  - topics: http://edamontology.org/topic_0085 # Functional genomics
+  - operation: http://edamontology.org/operation_0291 # Sequence clustering
+  - topics: http://edamontology.org/topic_0623 # Gene and protein families
