@@ -217,3 +217,7 @@
      - Prodigal-2.6.3.tar.gz
   tags: clean 
 
+- name: Set motd 
+  copy: src=files/motd dest=/etc mode=664
+  tags: motd
+  
