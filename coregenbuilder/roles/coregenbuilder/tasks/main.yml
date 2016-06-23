@@ -206,6 +206,10 @@
   copy: src=files/config_env.txt dest=/etc/coregenbuilder
   tags: coregenbuilder
 
+- name: configure coregenbuilder - step 6
+  lineinfile: dest=/usr/local/bin/run_cg_pipeline.sh regexp='^CGB_CONFIG=.*' line='CGB_CONFIG={{ CGB_CONFIG_PATH }}'
+  tags: coregenbuilder
+
 - name: remove all archives from /tmp
   file: path=/tmp/{{ item }} state=absent
   with_items:
