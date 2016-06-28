@@ -33,7 +33,7 @@
   tags: prodigal
 
 - name: unarchive prodigal
-  unarchive: src=/tmp/Prodigal-2.6.3.tar.gz dest=/usr/local/src copy=no
+  unarchive: src=/tmp/Prodigal-2.6.3.tar.gz dest=/usr/local/src/ copy=no creates=/usr/local/src/Prodigal-2.6.3
   tags: prodigal
 
 - name: install prodigal
@@ -135,35 +135,22 @@
   tags: ecamber
 
 - name: correction of ecamber python script
-  replace: dest=/usr/local/src/ecamber/src/soft/utils/camber_format_utils.py regexp='left_bound, right_bound = tokens\[1\]\.strip\("complement\("\)\.split\("\.\."\)' replace='left_bound, right_bound = tokens[1].strip("complement(").strip(")").split("..")'
+  replace:
+    dest=/usr/local/src/ecamber/src/soft/utils/camber_format_utils.py
+    regexp='left_bound, right_bound = tokens\[1\]\.strip\("complement\("\)\.split\("\.\."\)'
+    replace='left_bound, right_bound = tokens[1].strip("complement(").strip(")").split("..")'
   tags: ecamber
 
-- name: transfer opscan archive
-  copy: src=files/opscan_src_files.tar.gz dest=/tmp/opscan_src_files.tar.gz
-  tags: opscan
-
-- name: unarchive opscan
-  unarchive: src=/tmp/opscan_src_files.tar.gz dest=/usr/local/src copy=no
-  tags: opscan
-
-- name: install opscan
-  shell: make clean; make chdir=/usr/local/src/opscan_src_files
+- name: create directory opscan for shared data
+  file: path=/usr/local/share/opscan state=directory
   tags: opscan
 
 - name: copy opscan binary
-  copy: src=/usr/local/src/opscan_src_files/bin/opscan dest=/usr/local/bin/opscan remote_src=True mode=0755
+  copy: src=files/opscan dest=/usr/local/bin/
   tags: opscan
 
-- name: create directory opscan
-  file: path=/usr/local/share/opscan state=directory 
-  tags: opscan
-
-- name: copy opscan data
-  copy: src=/usr/local/src/opscan_src_files/matrices/BLOSUM60 dest=/usr/local/share/opscan remote_src=True
-  tags: opscan
-
-- name: remove opscan source files
-  file: path=/usr/local/src/opscan_src_files state=absent
+- name: copy opscan matrix
+  copy: src=files/BLOSUM60 dest=/usr/local/share/opscan/
   tags: opscan
 
 - name: transfer coregenbuilder source files
