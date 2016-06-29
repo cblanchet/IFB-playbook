@@ -209,7 +209,7 @@
   unarchive: src=/tmp/FASTA2AGP.tar.gz dest=/usr/local/src copy=no
   tags: fasta2agp
 
-- name: create jar file of fasta2agp
+- name: compile fasta2agp
   command: gcj -O3 --main=FASTA2AGP FASTA2AGP.java -o fasta2agp chdir=/usr/local/src/FASTA2AGP/src
   tags: fasta2agp
 
