@@ -215,7 +215,7 @@
 
 - name: move fasta2agp binary file 
   shell: cp /usr/local/src/FASTA2AGP/src/fasta2agp /usr/local/bin
-  tags: coregenbuilder
+  tags: fasta2agp
 
 - name: remove all archives from /tmp
   file: path=/tmp/{{ item }} state=absent
