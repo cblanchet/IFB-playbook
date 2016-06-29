@@ -28,6 +28,10 @@
   apt: pkg=tcsh state=installed
   tags: tcsh
 
+- name: install gcj
+  apt: pkg=gcj-jdk state=installed
+  tags: gcj
+
 - name: download prodigal
   get_url: url=https://github.com/hyattpd/Prodigal/archive/v2.6.3.tar.gz dest=/tmp/Prodigal-2.6.3.tar.gz
   tags: prodigal
@@ -146,7 +150,7 @@
   tags: opscan
 
 - name: copy opscan binary
-  copy: src=files/opscan dest=/usr/local/bin/
+  copy: src=files/opscan dest=/usr/local/bin/ mode=0755
   tags: opscan
 
 - name: copy opscan matrix
@@ -197,6 +201,22 @@
   lineinfile: dest=/usr/local/bin/run_cg_pipeline.sh regexp='^CGB_CONFIG=.*' line='CGB_CONFIG={{ CGB_CONFIG_PATH }}'
   tags: coregenbuilder
 
+- name: transfer fasta2agp source files
+  copy: src=files/FASTA2AGP.tar.gz dest=/tmp/FASTA2AGP.tar.gz
+  tags: fasta2agp
+
+- name: unarchive fasta2agp
+  unarchive: src=/tmp/FASTA2AGP.tar.gz dest=/usr/local/src copy=no
+  tags: fasta2agp
+
+- name: create jar file of fasta2agp
+  command: gcj -O3 --main=FASTA2AGP FASTA2AGP.java -o fasta2agp chdir=/usr/local/src/FASTA2AGP/src
+  tags: fasta2agp
+
+- name: move fasta2agp binary file 
+  shell: cp /usr/local/src/FASTA2AGP/src/fasta2agp /usr/local/bin
+  tags: coregenbuilder
+
 - name: remove all archives from /tmp
   file: path=/tmp/{{ item }} state=absent
   with_items:
@@ -206,6 +226,7 @@
      - libdivsufsort-2.0.2-1.tar.gz
      - opscan_src_files.tar.gz
      - Prodigal-2.6.3.tar.gz
+     - FASTA2AGP.tar.gz
   tags: clean 
 
 - name: Set motd 
