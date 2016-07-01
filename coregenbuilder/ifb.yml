@@ -1,6 +1,6 @@
 ---
 - title: CoreGenBuilder
-- description: Build core genome from a set of genomes
+- description: CoreGenBuilder is a pipeline for building a core genome from a set of bacterial genomes 
 - maintainer:
   name: Bertrand Néron 
   email: bneron@pasteur.fr
@@ -21,6 +21,8 @@
     name: tcsh
   - package: 
     name: cmake
+  - package: 
+    name: gcj-jdk
   - archive: 
     name: prodigal
     url: https://github.com/hyattpd/Prodigal/archive/v2.6.3.tar.gz
