@@ -53,7 +53,7 @@
   tags: andi
 
 - name: unarchive libdivsufsort
-  unarchive: src=/tmp/libdivsufsort-2.0.2-1.tar.gz dest=/usr/local/src copy=no =/usr/local/src/libdivsufsort-2.0.2-1
+  unarchive: src=/tmp/libdivsufsort-2.0.2-1.tar.gz dest=/usr/local/src copy=no creates=/usr/local/src/libdivsufsort-2.0.2-1
   tags: andi
 
 - name: create subdirectory build in libdivsufsort directory
