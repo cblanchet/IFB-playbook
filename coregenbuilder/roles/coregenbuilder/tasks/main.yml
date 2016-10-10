@@ -224,7 +224,6 @@
      - coregenbuilder.tar.gz
      - ecamber_src_1.09.zip
      - libdivsufsort-2.0.2-1.tar.gz
-     - opscan_src_files.tar.gz
      - Prodigal-2.6.3.tar.gz
      - FASTA2AGP.tar.gz
   tags: clean 
