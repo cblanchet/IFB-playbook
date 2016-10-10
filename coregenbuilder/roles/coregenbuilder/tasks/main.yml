@@ -157,49 +157,49 @@
   copy: src=files/BLOSUM60 dest=/usr/local/share/opscan/
   tags: opscan
 
-- name: transfer coregenbuilder source files
-  copy: src=files/coregenbuilder.tar.gz dest=/tmp/coregenbuilder.tar.gz
-  tags: coregenbuilder
+- name: transfer coregenebuilder source files
+  copy: src=files/coregenebuilder.tar.gz dest=/tmp/coregenebuilder.tar.gz
+  tags: coregenebuilder
 
-- name: unarchive coregenbuilder
-  unarchive: src=/tmp/coregenbuilder.tar.gz dest=/usr/local/src copy=no
-  tags: coregenbuilder
+- name: unarchive coregenebuilder
+  unarchive: src=/tmp/coregenebuilder.tar.gz dest=/usr/local/src copy=no
+  tags: coregenebuilder
 
-- name: create coregenbuilder etc directory
-  file: path=/etc/coregenbuilder state=directory
-  tags: coregenbuilder
+- name: create coregenebuilder etc directory
+  file: path=/etc/coregenebuilder state=directory
+  tags: coregenebuilder
 
-- name: remove share/coregenbuilder dir if exists
-  file: path=/usr/local/share/coregenbuilder state=absent
-  tags: coregenbuilder
+- name: remove share/coregenebuilder dir if exists
+  file: path=/usr/local/share/coregenebuilder state=absent
+  tags: coregenebuilder
 
-- name: create coregenbuilder share directory
-  file: path=/usr/local/share/coregenbuilder state=directory
-  tags: coregenbuilder
+- name: create coregenebuilder share directory
+  file: path=/usr/local/share/coregenebuilder state=directory
+  tags: coregenebuilder
 
-- name: configure coregenbuilder - step 1
-  shell: mv /usr/local/src/coregenbuilder/src/* /usr/local/bin
-  tags: coregenbuilder
+- name: configure coregenebuilder - step 1
+  shell: mv /usr/local/src/coregenebuilder/src/* /usr/local/bin
+  tags: coregenebuilder
 
-- name: configure coregenbuilder - step 2
-  shell: mv /usr/local/src/coregenbuilder/config/* /etc/coregenbuilder
-  tags: coregenbuilder
+- name: configure coregenebuilder - step 2
+  shell: mv /usr/local/src/coregenebuilder/config/* /etc/coregenebuilder
+  tags: coregenebuilder
 
-- name: configure coregenbuilder - step 3
-  shell: mv /usr/local/src/coregenbuilder/doc /usr/local/share/coregenbuilder
-  tags: coregenbuilder
+- name: configure coregenebuilder - step 3
+  shell: mv /usr/local/src/coregenebuilder/doc /usr/local/share/coregenebuilder
+  tags: coregenebuilder
 
-- name: configure coregenbuilder - step 4
-  shell: mv /usr/local/src/coregenbuilder/data /usr/local/share/coregenbuilder
-  tags: coregenbuilder
+- name: configure coregenebuilder - step 4
+  shell: mv /usr/local/src/coregenebuilder/data /usr/local/share/coregenebuilder
+  tags: coregenebuilder
 
-- name: configure coregenbuilder - step 5
-  copy: src=files/config_env.txt dest=/etc/coregenbuilder
-  tags: coregenbuilder
+- name: configure coregenebuilder - step 5
+  copy: src=files/config_env.txt dest=/etc/coregenebuilder
+  tags: coregenebuilder
 
-- name: configure coregenbuilder - step 6
+- name: configure coregenebuilder - step 6
   lineinfile: dest=/usr/local/bin/coregenebuilder regexp='^CGB_CONFIG=.*' line='CGB_CONFIG={{ CGB_CONFIG_PATH }}'
-  tags: coregenbuilder
+  tags: coregenebuilder
 
 - name: transfer fasta2agp source files
   copy: src=files/FASTA2AGP.tar.gz dest=/tmp/FASTA2AGP.tar.gz
@@ -221,14 +221,14 @@
   file: path=/tmp/{{ item }} state=absent
   with_items:
      - andi-0.9.4.tar.gz
-     - coregenbuilder.tar.gz
+     - coregenebuilder.tar.gz
      - ecamber_src_1.09.zip
      - libdivsufsort-2.0.2-1.tar.gz
      - Prodigal-2.6.3.tar.gz
      - FASTA2AGP.tar.gz
   tags: clean 
 
-- name: Set motd 
+- name: set motd 
   copy: src=files/motd dest=/etc mode=664
   tags: motd
   

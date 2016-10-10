@@ -1,6 +1,6 @@
 ---
-- title: CoreGenBuilder
-- description: CoreGenBuilder is a pipeline for building a core genome from a set of bacterial genomes 
+- title: CoreGeneBuilder
+- description: CoreGeneBuilder is a pipeline for building a core genome from a set of bacterial genomes 
 - maintainer:
   name: Bertrand Néron 
   email: bneron@pasteur.fr
@@ -38,7 +38,7 @@
   - archive:
     name: opscan
   - archive:
-    name: coregenbuilder
+    name: coregenebuilder
 
 - classification:
   - operation: http://edamontology.org/operation_2995 # Sequence classification
