@@ -201,6 +201,10 @@
   lineinfile: dest=/usr/local/bin/coregenebuilder regexp='^CGB_CONFIG=.*' line='CGB_CONFIG={{ CGB_CONFIG_PATH }}'
   tags: coregenebuilder
 
+- name: configure coregenebuilder - step 7
+  shell: mv /usr/local/src/coregenebuilder/README /usr/local/share/coregenebuilder/doc
+  tags: coregenebuilder
+
 - name: transfer fasta2agp source files
   copy: src=files/FASTA2AGP.tar.gz dest=/tmp/FASTA2AGP.tar.gz
   tags: fasta2agp
