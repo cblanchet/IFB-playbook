@@ -218,7 +218,7 @@
   tags: coregenebuilder
 
 - name: configure coregenebuilder - step 7
-  shell: mv /usr/local/src/coregenebuilder/README /usr/local/share/coregenebuilder/doc
+  shell: mv /usr/local/src/coregenebuilder/README /root
   tags: coregenebuilder
 
 

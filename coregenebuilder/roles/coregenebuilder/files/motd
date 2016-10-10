@@ -8,9 +8,12 @@
 
 
 
-Information on how to run CoreGeneBuilder is in /usr/local/share/coregenebuilder/doc/README !
-You will find more detailed documentation in /usr/local/share/coregenebuilder/doc and
-quick start data into /usr/local/share/coregenebuilder/data.
+Information on how to run CoreGeneBuilder is in README.
+
+You will find more detailed documentation into :
+   /usr/local/share/coregenebuilder/doc 
+and quick start data into :
+   /usr/local/share/coregenebuilder/data.
 
 
 
