@@ -165,6 +165,18 @@
   unarchive: src=/tmp/coregenebuilder.tar.gz dest=/usr/local/src copy=no
   tags: coregenebuilder
 
+- name: compile fasta2agp
+  command: gcj -O3 --main=FASTA2AGP FASTA2AGP.java -o fasta2agp chdir=/usr/local/src/coregenebuilder/src
+  tags: fasta2agp
+
+- name: move fasta2agp binary file 
+  shell: cp /usr/local/src/coregenebuilder/src/fasta2agp /usr/local/bin
+  tags: fasta2agp
+
+- name: remove fasta2agp dir if exists
+  file: path=/usr/local/src/coregenebuilder/FASTA2AGP state=absent
+  tags: fasta2agp
+
 - name: create coregenebuilder etc directory
   file: path=/etc/coregenebuilder state=directory
   tags: coregenebuilder
@@ -205,21 +217,6 @@
   shell: mv /usr/local/src/coregenebuilder/README /usr/local/share/coregenebuilder/doc
   tags: coregenebuilder
 
-- name: transfer fasta2agp source files
-  copy: src=files/FASTA2AGP.tar.gz dest=/tmp/FASTA2AGP.tar.gz
-  tags: fasta2agp
-
-- name: unarchive fasta2agp
-  unarchive: src=/tmp/FASTA2AGP.tar.gz dest=/usr/local/src copy=no
-  tags: fasta2agp
-
-- name: compile fasta2agp
-  command: gcj -O3 --main=FASTA2AGP FASTA2AGP.java -o fasta2agp chdir=/usr/local/src/FASTA2AGP/src
-  tags: fasta2agp
-
-- name: move fasta2agp binary file 
-  shell: cp /usr/local/src/FASTA2AGP/src/fasta2agp /usr/local/bin
-  tags: fasta2agp
 
 - name: remove all archives from /tmp
   file: path=/tmp/{{ item }} state=absent
@@ -229,7 +226,6 @@
      - ecamber_src_1.09.zip
      - libdivsufsort-2.0.2-1.tar.gz
      - Prodigal-2.6.3.tar.gz
-     - FASTA2AGP.tar.gz
   tags: clean 
 
 - name: set motd 
