@@ -170,11 +170,15 @@
   tags: fasta2agp
 
 - name: move fasta2agp binary file 
-  shell: cp /usr/local/src/coregenebuilder/src/fasta2agp /usr/local/bin
+  shell: mv /usr/local/src/coregenebuilder/src/fasta2agp /usr/local/bin
+  tags: fasta2agp
+
+- name: move fasta2agp src file 
+  shell: mv /usr/local/src/coregenebuilder/src/FASTA2AGP.java /usr/local/src/coregenebuilder/src/FASTA2AGP
   tags: fasta2agp
 
 - name: remove fasta2agp dir if exists
-  file: path=/usr/local/src/coregenebuilder/FASTA2AGP state=absent
+  file: path=/usr/local/src/coregenebuilder/src/FASTA2AGP state=absent
   tags: fasta2agp
 
 - name: create coregenebuilder etc directory
