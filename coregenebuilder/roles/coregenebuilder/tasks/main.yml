@@ -89,11 +89,11 @@
   tags: andi
 
 - name: download ecamber
-  get_url: url=http://bioputer.mimuw.edu.pl/ecamber/software/ecamber_src_1.09.zip dest=/tmp/ecamber_src_1.09.zip
+  get_url: url=http://bioputer.mimuw.edu.pl/ecamber/software/ecamber_v1.08/ecamber_src.zip dest=/tmp/ecamber_src_1.08.zip
   tags: ecamber
 
 - name: unarchive ecamber
-  unarchive: src=/tmp/ecamber_src_1.09.zip dest=/usr/local/src copy=no creates=/usr/local/src/ecamber_src_1.09
+  unarchive: src=/tmp/ecamber_src_1.08.zip dest=/usr/local/src copy=no creates=/usr/local/src/ecamber_src_1.08
   tags: ecamber
 
 - name: get muscle path
