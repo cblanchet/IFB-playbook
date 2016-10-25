@@ -251,7 +251,6 @@
      - Prodigal-2.6.3
   tags: clean 
 
-
 - name: set motd 
   copy: src=files/motd dest=/etc mode=664
   tags: motd
