@@ -242,6 +242,15 @@
      - Prodigal-2.6.3.tar.gz
   tags: clean 
 
+- name: remove directories from /usr/local/src
+  file: path=/usr/local/src/{{ item }} state=absent
+  with_items:
+     - andi-0.9.4
+     - coregenebuilder
+     - libdivsufsort-2.0.2-1
+     - Prodigal-2.6.3
+  tags: clean 
+
 - name: set motd 
   copy: src=files/motd dest=/etc mode=664
   tags: motd
