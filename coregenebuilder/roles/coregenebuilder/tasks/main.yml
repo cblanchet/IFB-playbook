@@ -44,6 +44,10 @@
   command: make install chdir=/usr/local/src/Prodigal-2.6.3
   tags: prodigal
 
+- name: make clean prodigal
+  command: make clean chdir=/usr/local/src/Prodigal-2.6.3
+  tags: prodigal
+
 - name: cmake install (required for installing libdivsufsort)
   apt: pkg=cmake state=installed
   tags: andi
@@ -68,6 +72,10 @@
   command: make install chdir=/usr/local/src/libdivsufsort-2.0.2-1/build 
   tags: andi
 
+- name: make clean libdivsufsort
+  command: make clean chdir=/usr/local/src/libdivsufsort-2.0.2-1/build 
+  tags: andi
+
 - name: download andi
   get_url: url=https://github.com/EvolBioInf/andi/releases/download/v0.9.4/andi-0.9.4.tar.gz dest=/tmp/andi-0.9.4.tar.gz
   tags: andi
@@ -86,6 +94,10 @@
 
 - name: make install andi
   command: make install chdir=/usr/local/src/andi-0.9.4
+  tags: andi
+
+- name: make clean andi
+  command: make clean chdir=/usr/local/src/andi-0.9.4
   tags: andi
 
 - name: download ecamber
