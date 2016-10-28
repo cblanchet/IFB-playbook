@@ -32,6 +32,14 @@
   apt: pkg=gcj-jdk state=installed
   tags: gcj
 
+- name: cmake install (required for installing libdivsufsort)
+  apt: pkg=cmake state=installed
+  tags: cmake
+
+- name: apt-get clean
+  command: apt-get -y clean
+  tags: apt
+
 - name: download prodigal
   get_url: url=https://github.com/hyattpd/Prodigal/archive/v2.6.3.tar.gz dest=/tmp/Prodigal-2.6.3.tar.gz
   tags: prodigal
@@ -47,10 +55,6 @@
 - name: make clean prodigal
   command: make clean chdir=/usr/local/src/Prodigal-2.6.3
   tags: prodigal
-
-- name: cmake install (required for installing libdivsufsort)
-  apt: pkg=cmake state=installed
-  tags: andi
 
 - name: download library libdivsufsort
   get_url: url=https://github.com/EvolBioInf/andi/releases/download/v0.9.4/libdivsufsort-2.0.2-1.tar.gz dest=/tmp/libdivsufsort-2.0.2-1.tar.gz
