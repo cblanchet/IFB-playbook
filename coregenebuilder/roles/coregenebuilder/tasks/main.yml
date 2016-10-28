@@ -21,7 +21,7 @@
   tags: R
 
 - name: install R
-  apt: pkg=r-base state=installed install_recommends=yes force=yes
+  apt: pkg=r-base-core state=installed force=yes
   tags: R
 
 - name: install tcsh
