@@ -32,7 +32,7 @@
   apt: pkg=gcj-jdk state=installed
   tags: gcj
 
-- name: cmake install (required for installing libdivsufsort)
+- name: install cmake (required for installing libdivsufsort)
   apt: pkg=cmake state=installed
   tags: cmake
 
