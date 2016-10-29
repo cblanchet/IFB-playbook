@@ -32,10 +32,6 @@
   apt: pkg=gcj-jdk state=installed
   tags: gcj
 
-#- name: install cmake (required for installing libdivsufsort)
-#  apt: pkg=cmake state=installed
-#  tags: cmake
-
 - name: apt-get clean
   command: apt-get -y clean
   tags: apt
@@ -56,30 +52,6 @@
   command: make clean chdir=/usr/local/src/Prodigal-2.6.3
   tags: prodigal
 
-#- name: download library libdivsufsort
-#  get_url: url=https://github.com/EvolBioInf/andi/releases/download/v0.9.4/libdivsufsort-2.0.2-1.tar.gz dest=/tmp/libdivsufsort-2.0.2-1.tar.gz
-#  tags: andi
-
-#- name: unarchive libdivsufsort
-#  unarchive: src=/tmp/libdivsufsort-2.0.2-1.tar.gz dest=/usr/local/src copy=no
-#  tags: andi
-
-#- name: create subdirectory build in libdivsufsort directory
-#  file: path=/usr/local/src/libdivsufsort-2.0.2-1/build state=directory
-#  tags: andi
-
-#- name: cmake libdivsufsort
-#  command: cmake install -DCMAKE_BUILD_TYPE="Release" .. chdir=/usr/local/src/libdivsufsort-2.0.2-1/build 
-#  tags: andi
-
-#- name: make libdivsufsort
-#  command: make install chdir=/usr/local/src/libdivsufsort-2.0.2-1/build 
-#  tags: andi
-
-#- name: make clean libdivsufsort
-#  command: make clean chdir=/usr/local/src/libdivsufsort-2.0.2-1/build 
-#  tags: andi
-
 - name: download andi
   get_url: url=https://github.com/EvolBioInf/andi/releases/download/v0.9.4/andi-0.9.4.tar.gz dest=/tmp/andi-0.9.4.tar.gz
   tags: andi
@@ -89,7 +61,6 @@
   tags: andi
 
 - name: configure andi
-  #command: ./configure CPPFLAGS="-I/usr/local/include" CFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/lib -Wl,-rpath,/usr/local/lib" chdir=/usr/local/src/andi-0.9.4
   command: ./configure --without-libdivsufsort chdir=/usr/local/src/andi-0.9.4
   tags: andi
 
