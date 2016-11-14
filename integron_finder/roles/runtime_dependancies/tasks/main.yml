@@ -1,12 +1,8 @@
 ---
 - name: Install hmmer3 package
-  apt: pkg=hmmer state=latest
-  tags: runtime_dep
-
-- name: Install Infernal package
-  apt: pkg=infernal state=latest
-  tags: runtime_dep
-
-- name: Install Prodigal package
-  apt: pkg=prodigal state=latest
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - hmmer
+    - infernal
+    - prodigal
   tags: runtime_dep
