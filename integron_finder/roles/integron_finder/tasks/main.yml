@@ -1,3 +1,25 @@
 ---
-- name: Install integron finder
+
+- name: Install dependencies needed for python modules compilation.
+  apt: pkg={{ item }} state=latest
+  # pkg-config is needed otherwise matplotlib cannot be installed via pip
+  # it does not finf freetype libraries
+  # https://github.com/matplotlib/matplotlib/issues/3029/
+  with_items:
+    - pkg-config
+    - python-dev
+    - libfreetype6-dev
+    - libpng12-dev
+
+
+- name: Install integron finder ( and matplotlib, numpy, pandas, biopython)
   pip: name=integron_finder version=1.5.1
+  # pip will install also matplotlib, numpy, pandas and biopython
+  # I use pip instead of apt because in ubuntu 14.04 (version available at IFB)
+  # these package matplotlib aand numpy are too old
+  # and pandas is not packaged
+
+- name: set motd
+  copy: src=files/etc/motd dest=/etc mode=664
+  tags: motd
+
