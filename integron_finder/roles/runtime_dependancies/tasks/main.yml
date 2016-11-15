@@ -1,8 +1,0 @@
----
-- name: Install hmmer3 package
-  apt: pkg={{ item }} state=latest
-  with_items:
-    - hmmer
-    - infernal
-    - prodigal
-  tags: runtime_dep
