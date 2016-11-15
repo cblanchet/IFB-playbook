@@ -1,0 +1,22 @@
+---
+- name: Install runtime dependencies package
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - hmmer
+    - infernal
+  tags: runtime_dep
+
+
+- name: get Prodigal 2.6.2
+  # prodigal is not packaged in ubuntu 14.04
+  get_url:
+    url="https://github.com/hyattpd/Prodigal/archive/v2.6.2.tar.gz"
+    dest="/tmp/"
+
+- name: unarchive Prodigal
+  unarchive:
+    src="/tmp/v2.6.2.tar.gz"
+    dest="/tmp/"
+
+- name: Compile Prodigal
+  command: make install chdir="/tmp/Prodigal-2.6.2"

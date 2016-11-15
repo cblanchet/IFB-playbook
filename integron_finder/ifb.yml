@@ -1,0 +1,40 @@
+---
+- title: Integron_Finder
+- description: |
+    Integron Finder aims at detecting integrons in DNA sequences
+    by finding particular features of the integron:
+      * the attC sites
+      * the integrase
+      * and when possible attI site and promoters.
+
+    integron_finder has been describe in a paper published in Nucleic Acid Research.
+
+    Identification and analysis of integrons and cassette arrays in bacterial genomes.
+    Jean Cury; Thomas Jove; Marie Touchon; Bertrand Néron; Eduardo PC Rocha
+    Nucleic Acids Research 2016; doi:10.1093/nar/gkw319
+- maintainer:
+  name: Bertrand Néron 
+  email: bneron@pasteur.fr
+- tools: 
+  - package:
+    name: Prodigal==2.6.2
+  - package:
+    name: Infernal==1.1.1
+  - package:
+    name: HMMER==3.1b2
+  - package:
+    name: numpy==1.11.0
+  - package:
+    name: matplotlib==1.5.1
+  - package: 
+    name: pandas==0.19.1
+  - package:
+    name: biopython==1.66
+  - archive:
+    name: [integron_finder]
+    homepage: https://github.com/gem-pasteur/Integron_Finder/
+    publication:
+    url: http://dx.doi.org/10.1093/nar/gkw319
+- classification:
+  - operation: http://edamontology.org/operation_0362 # Genome annotation
+  - topics: http://edamontology.org/topic_0085 # Functional genomics
