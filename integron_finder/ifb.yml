@@ -19,17 +19,17 @@
   - package:
     name: Prodigal==2.6.2
   - package:
-    name: Infernal==1.1
+    name: Infernal==1.1.1
   - package:
-    name: HMMER==3.1b1
+    name: HMMER==3.1b2
   - package:
-    name: numpy==1.9.1
+    name: numpy==1.11.0
   - package:
-    name: matplotlib==1.4.3
+    name: matplotlib==1.5.1
   - package: 
-    name: pandas==0.18.0
+    name: pandas==0.19.1
   - package:
-    name: biopython==1.65
+    name: biopython==1.66
   - archive:
     name: [integron_finder]
     homepage: https://github.com/gem-pasteur/Integron_Finder/
