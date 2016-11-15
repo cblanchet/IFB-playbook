@@ -6,5 +6,5 @@
 
   roles:
     - ifb
-    - runtime_dependancies
-    - integronfinder
+    - runtime_dependencies
+    - integron_finder
