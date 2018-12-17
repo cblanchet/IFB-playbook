@@ -1,6 +1,6 @@
 ---
 - name: install integron_finder and it's dependencies
-  hosts: ifb
+  hosts: all
   remote_user: root
 
 
