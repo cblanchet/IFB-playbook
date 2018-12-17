@@ -9,7 +9,7 @@
     - pkg-config
     - python-dev
     - libfreetype6-dev
-    - libpng12-dev
+    - libpng-dev
 
 
 - name: Install integron finder ( and matplotlib, numpy, pandas, biopython)
